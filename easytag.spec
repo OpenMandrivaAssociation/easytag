@@ -1,6 +1,6 @@
 %define name       easytag
 %define version 2.0
-%define rel 1
+%define rel 2
 %define build_plf 0
 %define release %mkrel %rel
 %{?_with_plf: %{expand: %%global build_plf 1}}
@@ -18,6 +18,7 @@ License:      GPL
 URL:          http://easytag.sourceforge.net
 Group:        Sound
 Source:       http://prdownloads.sourceforge.net/easytag/%{name}-%{version}.tar.bz2
+Patch: patch_20_remove_glib_warning_on_startup.diff
 BuildRoot:    %{_tmppath}/%name-buildroot
 Requires: gtk2 >= 2.4
 BuildRequires: gtk2-devel >= 2.4
@@ -74,6 +75,7 @@ This package is in PLF as the MP4 support is violating patents.
 
 %prep
 %setup -q
+%patch -p1
 #bzcat %SOURCE1 > po/de.po
 
 %build
@@ -132,5 +134,3 @@ rm -rf ${RPM_BUILD_ROOT}
 %{_liconsdir}/%{name}.png
 %{_miconsdir}/%{name}.png
 %{_menudir}/%{name}
-
-
