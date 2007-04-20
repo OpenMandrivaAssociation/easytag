@@ -1,6 +1,6 @@
 %define name       easytag
-%define version 2.0
-%define rel 2
+%define version 2.0.1
+%define rel 1
 %define build_plf 0
 %define release %mkrel %rel
 %{?_with_plf: %{expand: %%global build_plf 1}}
@@ -18,13 +18,14 @@ License:      GPL
 URL:          http://easytag.sourceforge.net
 Group:        Sound
 Source:       http://prdownloads.sourceforge.net/easytag/%{name}-%{version}.tar.bz2
-Patch: patch_20_remove_glib_warning_on_startup.diff
+Source1: easytag-2.0.1-de.po.bz2
 BuildRoot:    %{_tmppath}/%name-buildroot
 Requires: gtk2 >= 2.4
 BuildRequires: gtk2-devel >= 2.4
 BuildRequires: id3lib-devel
 BuildRequires: libvorbis-devel
 BuildRequires: libflac-devel
+BuildRequires: libwavpack-devel
 %if %build_plf
 BuildRequires: libmpeg4ip-devel >= 1.2
 %endif
@@ -36,12 +37,13 @@ Requires(postun): desktop-file-utils
 
 %description
 EasyTAG is an utility for viewing and editing tags of MP3, MP2, FLAC,
-Ogg Vorbis, MP4/AAC, MusePack and Monkey's Audio files. Its simple
-and nice GTK+ interface makes tagging easier under GNU/Linux.
+Ogg Vorbis, MP4/AAC, MusePack, Wavpack and Monkey's Audio files. Its
+simple and nice GTK+ interface makes tagging easier under GNU/Linux.
 Features:
 - View, edit, write tags of MP3, MP2 files (ID3 tag with pictures),
   FLAC files (FLAC Vorbis tag), Ogg Vorbis files (Ogg Vorbis tag),
-  MP4/AAC (MP4/AAC tag), and MusePack, Monkey's Audio files (APE tag),
+  MP4/AAC (MP4/AAC tag), and MusePack, Wavpack, Monkey's Audio files
+  (APE tag),
 - Can edit more tag fields : Title, Artist, Album, Disc Album, Year,
   Track Number, Genre, Comment, Composer, Original Artist/Performer,
   Copyright, URL and Encoder name,
@@ -75,8 +77,7 @@ This package is in PLF as the MP4 support is violating patents.
 
 %prep
 %setup -q
-%patch -p1
-#bzcat %SOURCE1 > po/de.po
+bzcat %SOURCE1 > po/de.po
 
 %build
 %configure2_5x
