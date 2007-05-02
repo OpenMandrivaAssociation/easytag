@@ -1,5 +1,5 @@
 %define name       easytag
-%define version 2.0.1
+%define version 2.0.2
 %define rel 1
 %define build_plf 0
 %define release %mkrel %rel
@@ -77,7 +77,7 @@ This package is in PLF as the MP4 support is violating patents.
 
 %prep
 %setup -q
-bzcat %SOURCE1 > po/de.po
+#bzcat %SOURCE1 > po/de.po
 
 %build
 %configure2_5x
