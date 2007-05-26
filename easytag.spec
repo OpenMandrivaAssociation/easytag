@@ -1,6 +1,6 @@
 %define name       easytag
 %define version 2.1
-%define rel 1
+%define rel 2
 %define build_plf 0
 %define release %mkrel %rel
 %{?_with_plf: %{expand: %%global build_plf 1}}
@@ -19,10 +19,12 @@ URL:          http://easytag.sourceforge.net
 Group:        Sound
 Source:       http://prdownloads.sourceforge.net/easytag/%{name}-%{version}.tar.bz2
 Source1: easytag-2.1-de.po.bz2
+Patch: easytag-2.1-libid3tag.patch
 BuildRoot:    %{_tmppath}/%name-buildroot
 Requires: gtk2 >= 2.4
 BuildRequires: gtk2-devel >= 2.4
 BuildRequires: id3lib-devel
+BuildRequires: libid3tag-devel
 BuildRequires: libvorbis-devel
 BuildRequires: libflac-devel
 BuildRequires: libwavpack-devel
@@ -78,6 +80,9 @@ This package is in PLF as the MP4 support is violating patents.
 %prep
 %setup -q
 bzcat %SOURCE1 > po/de.po
+%patch -p1
+autoconf
+automake
 
 %build
 %configure2_5x
