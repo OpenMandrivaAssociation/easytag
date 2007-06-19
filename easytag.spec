@@ -1,6 +1,6 @@
 %define name       easytag
 %define version 2.1
-%define rel 3
+%define rel 4
 %define build_plf 0
 %define release %mkrel %rel
 %{?_with_plf: %{expand: %%global build_plf 1}}
@@ -21,6 +21,7 @@ Source:       http://prdownloads.sourceforge.net/easytag/%{name}-%{version}.tar.
 Source1: easytag-2.1-de.po.bz2
 Patch: easytag-2.1-libid3tag.patch
 Patch1: patch_21_flac_comment_fix.diff
+Patch2: patch_21_rename_file_case_fix.diff
 BuildRoot:    %{_tmppath}/%name-buildroot
 Requires: gtk2 >= 2.4
 BuildRequires: gtk2-devel >= 2.4
@@ -83,6 +84,7 @@ This package is in PLF as the MP4 support is violating patents.
 bzcat %SOURCE1 > po/de.po
 %patch -p1
 %patch1 -p1
+%patch2 -p1
 aclocal
 autoconf
 automake
