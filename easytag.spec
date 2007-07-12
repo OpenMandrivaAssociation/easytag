@@ -1,5 +1,5 @@
 %define name       easytag
-%define version 2.1.1
+%define version 2.1.2
 %define rel 1
 %define build_plf 0
 %define release %mkrel %rel
@@ -18,7 +18,7 @@ License:      GPL
 URL:          http://easytag.sourceforge.net
 Group:        Sound
 Source:       http://prdownloads.sourceforge.net/easytag/%{name}-%{version}.tar.bz2
-Source1: easytag-2.1.1-de.po.bz2
+Source1: easytag-2.1.2-de.po.bz2
 BuildRoot:    %{_tmppath}/%name-buildroot
 Requires: gtk2 >= 2.4
 BuildRequires: gtk2-devel >= 2.4
