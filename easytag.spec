@@ -32,7 +32,7 @@ BuildRequires: libflac-devel
 BuildRequires: libwavpack-devel
 BuildRequires: libspeex-devel
 %if %build_plf
-BuildRequires: libmpeg4ip-devel >= 1.2
+BuildRequires: libmpeg4ip-devel >= 1.6
 %endif
 BuildRequires: autoconf2.5
 Requires(post): desktop-file-utils
