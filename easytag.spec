@@ -1,6 +1,6 @@
 %define name       easytag
 %define version 2.1.3
-%define rel 3
+%define rel 4
 %define build_plf 0
 %define release %mkrel %rel
 %{?_with_plf: %{expand: %%global build_plf 1}}
