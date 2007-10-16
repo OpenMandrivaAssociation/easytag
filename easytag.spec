@@ -1,5 +1,5 @@
 %define name       easytag
-%define version 2.1.2
+%define version 2.1.3
 %define rel 1
 %define build_plf 0
 %define release %mkrel %rel
@@ -18,7 +18,8 @@ License:      GPL
 URL:          http://easytag.sourceforge.net
 Group:        Sound
 Source:       http://prdownloads.sourceforge.net/easytag/%{name}-%{version}.tar.bz2
-Source1: easytag-2.1.2-de.po.bz2
+Source1: easytag-2.1.3-de.po.bz2
+Patch: easytag-2.1.3-desktopentry.patch
 BuildRoot:    %{_tmppath}/%name-buildroot
 Requires: gtk2 >= 2.4
 BuildRequires: gtk2-devel >= 2.4
@@ -32,8 +33,6 @@ BuildRequires: libspeex-devel
 BuildRequires: libmpeg4ip-devel >= 1.2
 %endif
 BuildRequires: autoconf2.5
-BuildRequires: ImageMagick
-BuildRequires: desktop-file-utils
 Requires(post): desktop-file-utils
 Requires(postun): desktop-file-utils
 
@@ -80,6 +79,7 @@ This package is in PLF as the MP4 support is violating patents.
 
 %prep
 %setup -q
+%patch -p1 -b .desktopentry
 bzcat %SOURCE1 > po/de.po
 
 %build
@@ -90,29 +90,6 @@ bzcat %SOURCE1 > po/de.po
 rm -rf ${RPM_BUILD_ROOT}
 %makeinstall
 %{find_lang} %name
-# install menu
-mkdir -p $RPM_BUILD_ROOT/%{_menudir}
-cat << EOF > $RPM_BUILD_ROOT/%{_menudir}/%{name}
-?package(%{name}):\
-needs="x11"\
-section="Multimedia/Sound"\
-title="EasyTAG"\
-longtitle="An utility for viewing/editing MP3 tags with a GTK+ GUI."\
-command="easytag"\
-xdg="true" \
-icon="%{name}.png"
-EOF
-# install icons
-mkdir -p $RPM_BUILD_ROOT{%{_liconsdir},%{_miconsdir},%{_iconsdir}}
-convert pixmaps/EasyTAG.xpm $RPM_BUILD_ROOT%{_liconsdir}/%{name}.png
-convert -scale 32x32 pixmaps/EasyTAG.xpm $RPM_BUILD_ROOT%{_iconsdir}/%{name}.png
-convert -scale 16x16 pixmaps/EasyTAG.xpm $RPM_BUILD_ROOT%{_miconsdir}/%{name}.png
-
-desktop-file-install --vendor="" --add-category="GTK" \
-	--add-mime-type="x-directory/normal" \
-	--remove-category="Application" \
-	--add-category="X-MandrivaLinux-Multimedia-Sound" \
-	--dir $RPM_BUILD_ROOT%{_datadir}/applications $RPM_BUILD_ROOT%{_datadir}/applications/*
 
 %clean
 rm -rf ${RPM_BUILD_ROOT}
@@ -134,7 +111,3 @@ rm -rf ${RPM_BUILD_ROOT}
 %{_datadir}/applications/easytag.desktop
 %{_datadir}/pixmaps/*
 %{_datadir}/easytag/
-%{_iconsdir}/%{name}.png
-%{_liconsdir}/%{name}.png
-%{_miconsdir}/%{name}.png
-%{_menudir}/%{name}
