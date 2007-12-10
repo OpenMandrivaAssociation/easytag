@@ -1,6 +1,6 @@
 %define name       easytag
-%define version 2.1.3
-%define rel 4
+%define version 2.1.4
+%define rel 1
 %define build_plf 0
 %define release %mkrel %rel
 %{?_with_plf: %{expand: %%global build_plf 1}}
@@ -18,10 +18,7 @@ License:      GPL
 URL:          http://easytag.sourceforge.net
 Group:        Sound
 Source:       http://prdownloads.sourceforge.net/easytag/%{name}-%{version}.tar.bz2
-Source1: easytag-2.1.3-de.po.bz2
-Patch: easytag-2.1.3-desktopentry.patch
-# fix for new mpeg4ip API
-Patch1: easytag-2.1.3-mpeg4ip-1.6.0.patch
+Source1: easytag-2.1.4-de.po.bz2
 BuildRoot:    %{_tmppath}/%name-buildroot
 Requires: gtk2 >= 2.4
 BuildRequires: gtk2-devel >= 2.4
@@ -81,8 +78,6 @@ This package is in PLF as the MP4 support is violating patents.
 
 %prep
 %setup -q
-%patch -p1 -b .desktopentry
-%patch1 -p1
 bzcat %SOURCE1 > po/de.po
 
 %build
