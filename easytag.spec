@@ -1,14 +1,7 @@
 %define name       easytag
 %define version 2.1.5
-%define rel 1
-%define build_plf 0
+%define rel 2
 %define release %mkrel %rel
-%{?_with_plf: %{expand: %%global build_plf 1}}
-%if %build_plf
-%define distsuffix plf
-%endif
-#fixed2
-%{?!mkrel:%define mkrel(c:) %{-c: 0.%{-c*}.}%{!?_with_unstable:%(perl -e '$_="%{1}";m/(.\*\\D\+)?(\\d+)$/;$rel=${2}-1;re;print "$1$rel";').%{?subrel:%subrel}%{!?subrel:1}.%{?distversion:%distversion}%{?!distversion:%(echo $[%{mdkversion}/10])}}%{?_with_unstable:%{1}}%{?distsuffix:%distsuffix}%{?!distsuffix:mdk}}
 
 Summary:      Tag editor for MP3, OGG files
 Name:         %name
@@ -28,9 +21,7 @@ BuildRequires: libvorbis-devel
 BuildRequires: libflac-devel
 BuildRequires: libwavpack-devel
 BuildRequires: libspeex-devel
-%if %build_plf
-BuildRequires: libmpeg4ip-devel >= 1.6
-%endif
+BuildRequires: libmp4v2-devel
 BuildRequires: autoconf2.5
 Requires(post): desktop-file-utils
 Requires(postun): desktop-file-utils
@@ -72,9 +63,6 @@ Features:
   Ukrainian, Czech, Spanish, Polish, Romanian, Danish, Greek and Brazilian
   Portuguese translation languages,
 - Written in C and uses GTK+ 2.4 for the GUI.
-%if %build_plf
-This package is in PLF as the MP4 support is violating patents.
-%endif
 
 %prep
 %setup -q
