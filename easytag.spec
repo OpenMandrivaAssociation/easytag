@@ -1,30 +1,24 @@
-%define name       easytag
-%define version 2.1.6
-%define rel 1
-%define release %mkrel %rel
-
-Summary:      Tag editor for MP3, OGG files
-Name:         %name
-Version:      %version
-Release:      %release
-License:      GPL
-URL:          http://easytag.sourceforge.net
-Group:        Sound
-Source:       http://prdownloads.sourceforge.net/easytag/%{name}-%{version}.tar.bz2
-Source1: easytag-2.1.6-de.po.bz2
-BuildRoot:    %{_tmppath}/%name-buildroot
-Requires: gtk2 >= 2.4
-BuildRequires: gtk2-devel >= 2.4
-BuildRequires: id3lib-devel
-BuildRequires: libid3tag-devel
-BuildRequires: libvorbis-devel
-BuildRequires: libflac-devel
-BuildRequires: libwavpack-devel
-BuildRequires: libspeex-devel
-BuildRequires: libmp4v2-devel
-BuildRequires: autoconf2.5
-Requires(post): desktop-file-utils
-Requires(postun): desktop-file-utils
+Summary:	Tag editor for MP3, OGG files
+Name:		easytag
+Version:	2.1.6
+Release:	%mkrel 2
+License:	GPLv2+
+Group:		Sound
+URL:		http://easytag.sourceforge.net
+Source0:	http://prdownloads.sourceforge.net/easytag/%{name}-%{version}.tar.bz2
+Source1:	easytag-2.1.6-de.po.bz2
+BuildRequires:	gtk2-devel >= 2.4
+BuildRequires:	id3lib-devel
+BuildRequires:	libid3tag-devel
+BuildRequires:	libvorbis-devel
+BuildRequires:	libflac-devel
+BuildRequires:	libwavpack-devel
+BuildRequires:	libspeex-devel
+BuildRequires:	libmp4v2-devel
+BuildRequires:	desktop-file-utils
+Requires(post):	desktop-file-utils
+Requires(postun):	desktop-file-utils
+BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
 EasyTAG is an utility for viewing and editing tags of MP3, MP2, FLAC,
@@ -73,12 +67,17 @@ bzcat %SOURCE1 > po/de.po
 %make
 
 %install
-rm -rf ${RPM_BUILD_ROOT}
-%makeinstall
-%{find_lang} %name
+rm -rf %{buildroot}
+%makeinstall_std
+
+desktop-file-install \
+	 --remove-mime-type="x-directory/normal" \
+	 --dir %{buildroot}%{_datadir}/applications %{buildroot}%{_datadir}/applications/*
+
+%find_lang %{name}
 
 %clean
-rm -rf ${RPM_BUILD_ROOT}
+rm -rf %{buildroot}
 
 %if %mdkversion < 200900
 %post
@@ -93,9 +92,9 @@ rm -rf ${RPM_BUILD_ROOT}
 %endif
 
 %files -f %{name}.lang
-%defattr(-, root, root)
-%doc ChangeLog INSTALL COPYING README TODO THANKS USERS-GUIDE
-%doc doc/EasyTAG_Documentation*  doc/users_guide*
+%defattr(-,root,root)
+%doc ChangeLog README TODO THANKS USERS-GUIDE
+%doc doc/EasyTAG_Documentation* doc/users_guide*
 %{_bindir}/easytag
 %{_mandir}/man1/easytag.1*
 %{_datadir}/applications/easytag.desktop
