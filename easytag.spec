@@ -1,13 +1,14 @@
 Summary:	Tag editor for MP3, OGG files
 Name:		easytag
 Version:	2.1.6
-Release:	%mkrel 4
+Release:	%mkrel 5
 License:	GPLv2+
 Group:		Sound
 URL:		http://easytag.sourceforge.net
 Source0:	http://prdownloads.sourceforge.net/easytag/%{name}-%{version}.tar.bz2
 Source1:	easytag-2.1.6-de.po.bz2
-Patch: 		easytag-2.1.6-mp4v2.patch
+Patch0: 	easytag-2.1.6-mp4v2.patch
+Patch1:		easytag-2.1.6-mp4v2-1.9.patch
 BuildRequires:	gtk2-devel >= 2.4
 BuildRequires:	id3lib-devel
 BuildRequires:	libid3tag-devel
@@ -61,10 +62,11 @@ Features:
 %prep
 %setup -q
 bzcat %SOURCE1 > po/de.po
-%patch -p1
-autoreconf
+%patch0 -p1
+%patch1 -p0
 
 %build
+autoreconf -fi
 %configure2_5x
 %make
 
