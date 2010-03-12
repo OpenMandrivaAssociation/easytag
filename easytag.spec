@@ -1,7 +1,7 @@
 Summary:	Tag editor for MP3, OGG files
 Name:		easytag
 Version:	2.1.6
-Release:	%mkrel 8
+Release:	%mkrel 9
 License:	GPLv2+
 Group:		Sound
 URL:		http://easytag.sourceforge.net
@@ -17,6 +17,7 @@ BuildRequires:	libflac-devel
 BuildRequires:	libwavpack-devel
 BuildRequires:	libspeex-devel
 BuildRequires:	libmp4v2-devel >= 1.9.0
+BuildRequires:  desktop-file-utils
 Requires(post):	desktop-file-utils
 Requires(postun):	desktop-file-utils
 BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
@@ -74,6 +75,11 @@ rm -rf %{buildroot}
 %makeinstall_std
 
 %find_lang %{name}
+
+desktop-file-install --vendor="" \
+  --remove-mime-type="x-directory/normal" \
+  --add-mime-type="inode/directory" \
+  --dir $RPM_BUILD_ROOT%{_datadir}/applications $RPM_BUILD_ROOT%{_datadir}/applications/*
 
 %clean
 rm -rf %{buildroot}
