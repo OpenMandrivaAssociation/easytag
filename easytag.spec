@@ -1,7 +1,7 @@
 Summary:	Tag editor for MP3, OGG files
 Name:		easytag
 Version:	2.1.6
-Release:	%mkrel 9
+Release:	%mkrel 10
 License:	GPLv2+
 Group:		Sound
 URL:		http://easytag.sourceforge.net
