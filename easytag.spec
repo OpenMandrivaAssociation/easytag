@@ -1,8 +1,8 @@
-%define git 20120115
+%define git 20120604
 Summary:	Tag editor for MP3, OGG files
 Name:		easytag
 Version:	2.1.7
-Release:	%mkrel 0.%git.1
+Release:	%mkrel 1.%git.1
 License:	GPLv2+
 Group:		Sound
 URL:		http://easytag.sourceforge.net
@@ -63,7 +63,7 @@ Features:
 %prep
 %setup -q -n %name
 bzcat %SOURCE2 > po/ru.po
-%patch1 -p1 -b .gnudb
+%apply_patches
 
 ./autogen.sh
 
