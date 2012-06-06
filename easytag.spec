@@ -80,6 +80,7 @@ rm -rf %{buildroot}
 desktop-file-install --vendor="" \
   --remove-mime-type="x-directory/normal" \
   --add-mime-type="inode/directory" \
+  --remove-category="Editor" \
   --dir $RPM_BUILD_ROOT%{_datadir}/applications $RPM_BUILD_ROOT%{_datadir}/applications/*
 
 
