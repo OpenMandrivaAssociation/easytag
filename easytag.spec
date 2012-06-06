@@ -15,7 +15,7 @@ BuildRequires:	libid3tag-devel
 BuildRequires:	libvorbis-devel
 BuildRequires:	libflac-devel
 BuildRequires:	libwavpack-devel
-BuildRequires:	libspeex-devel
+BuildRequires:	speex-devel
 BuildRequires:	libmp4v2-devel >= 1.9.0
 BuildRequires:  desktop-file-utils
 Requires(post):	desktop-file-utils
