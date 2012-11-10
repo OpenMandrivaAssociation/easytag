@@ -1,0 +1,60 @@
+*** easytag-2.1.4-orig/src/cddb.c	2007-11-30 02:09:49.000000000 +0300
+--- easytag-2.1.4/src/cddb.c	2009-06-04 23:39:34.000000000 +0400
+*************** gboolean Cddb_Search_Album_List_From_Str
+*** 2527,2533 ****
+      // Do a loop to load all the pages of results
+      do
+      {
+!         cddb_server_name     = g_strdup(CDDB_SERVER_NAME_MANUAL_SEARCH);    //"www.gnudb.org");
+          cddb_server_port     = CDDB_SERVER_PORT_MANUAL_SEARCH;              //80;
+          cddb_server_cgi_path = g_strdup(CDDB_SERVER_CGI_PATH_MANUAL_SEARCH);//"/~cddb/cddb.cgi");
+  
+--- 2527,2533 ----
+      // Do a loop to load all the pages of results
+      do
+      {
+!         cddb_server_name     = g_strdup_printf("www.%s", CDDB_SERVER_NAME_MANUAL_SEARCH);    //"www.gnudb.org");
+          cddb_server_port     = CDDB_SERVER_PORT_MANUAL_SEARCH;              //80;
+          cddb_server_cgi_path = g_strdup(CDDB_SERVER_CGI_PATH_MANUAL_SEARCH);//"/~cddb/cddb.cgi");
+  
+*************** gboolean Cddb_Search_Album_List_From_Str
+*** 2676,2682 ****
+                  cddbalbum = g_malloc0(sizeof(CddbAlbum));
+  
+                  // Parameters of the server used
+!                 cddbalbum->server_name     = g_strdup(cddb_server_name);
+                  cddbalbum->server_port     = cddb_server_port;
+                  cddbalbum->server_cgi_path = g_strdup(cddb_server_cgi_path);
+                  cddbalbum->bitmap          = Cddb_Get_Pixbuf_From_Server_Name(cddbalbum->server_name);
+--- 2676,2682 ----
+                  cddbalbum = g_malloc0(sizeof(CddbAlbum));
+  
+                  // Parameters of the server used
+!                 cddbalbum->server_name     = g_strdup_printf("gnudb.%s", CDDB_SERVER_NAME_MANUAL_SEARCH);
+                  cddbalbum->server_port     = cddb_server_port;
+                  cddbalbum->server_cgi_path = g_strdup(cddb_server_cgi_path);
+                  cddbalbum->bitmap          = Cddb_Get_Pixbuf_From_Server_Name(cddbalbum->server_name);
+diff -p -up easytag-2.1.6/src/prefs.c~ easytag-2.1.6/src/prefs.c
+--- easytag-2.1.6/src/prefs.c~	2008-01-18 23:01:39.000000000 +0100
++++ easytag-2.1.6/src/prefs.c	2009-06-22 22:59:55.000000000 +0200
+@@ -1221,7 +1221,7 @@ void Open_OptionsWindow (void)
+     CddbServerNameManualSearch = gtk_combo_box_entry_new_text();
+     gtk_box_pack_start(GTK_BOX(hbox),CddbServerNameManualSearch,FALSE,FALSE,0);
+     gtk_combo_box_append_text(GTK_COMBO_BOX(CddbServerNameManualSearch), "www.freedb.org");
+-    gtk_combo_box_append_text(GTK_COMBO_BOX(CddbServerNameManualSearch), "www.gnudb.org");
++    gtk_combo_box_append_text(GTK_COMBO_BOX(CddbServerNameManualSearch), "gnudb.org");
+     if (CDDB_SERVER_NAME_MANUAL_SEARCH)
+         gtk_entry_set_text(GTK_ENTRY(GTK_BIN(CddbServerNameManualSearch)->child),CDDB_SERVER_NAME_MANUAL_SEARCH);
+ 
+diff -p -up easytag-2.1.6/src/setting.c~ easytag-2.1.6/src/setting.c
+--- easytag-2.1.6/src/setting.c~	2008-05-25 00:32:38.000000000 +0200
++++ easytag-2.1.6/src/setting.c	2009-06-22 23:00:15.000000000 +0200
+@@ -540,7 +540,7 @@ void Init_Config_Variables (void)
+     CDDB_SERVER_NAME_AUTOMATIC_SEARCH2      = g_strdup("freedb.musicbrainz.org");
+     CDDB_SERVER_PORT_AUTOMATIC_SEARCH2      = 80;
+     CDDB_SERVER_CGI_PATH_AUTOMATIC_SEARCH2  = g_strdup("/~cddb/cddb.cgi");
+-    CDDB_SERVER_NAME_MANUAL_SEARCH          = g_strdup("www.gnudb.org");
++    CDDB_SERVER_NAME_MANUAL_SEARCH          = g_strdup("gnudb.org");
+     CDDB_SERVER_PORT_MANUAL_SEARCH          = 80;
+     CDDB_SERVER_CGI_PATH_MANUAL_SEARCH      = g_strdup("/~cddb/cddb.cgi");
+     CDDB_LOCAL_PATH                         = NULL;
