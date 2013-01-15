@@ -1,0 +1,11 @@
+--- easytag/configure.in.bero	2013-01-15 19:58:37.538346269 +0100
++++ easytag/configure.in	2013-01-15 20:00:04.830300501 +0100
+@@ -466,7 +466,7 @@ dnl AM_GNU_GETTEXT_VERSION(0.10.40)
+ dnl -------------------------------
+ dnl config header
+ dnl -------------------------------
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS([config.h])
+ 
+ 
+ AC_OUTPUT([ Makefile

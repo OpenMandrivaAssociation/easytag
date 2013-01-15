@@ -9,6 +9,7 @@ URL:		http://easytag.sourceforge.net
 Source0:	http://prdownloads.sourceforge.net/easytag/%{name}-%{git}.tar.xz
 Source2:	easytag-2.1.6-ru.po.bz2
 Patch1:		easytag_gnudb.patch
+Patch2:		easytag-automake-1.13.patch
 BuildRequires:	gtk2-devel >= 2.4
 BuildRequires:	id3lib-devel
 BuildRequires:	libid3tag-devel
@@ -20,7 +21,6 @@ BuildRequires:	libmp4v2-devel >= 1:2.0
 BuildRequires:  desktop-file-utils
 Requires(post):	desktop-file-utils
 Requires(postun):	desktop-file-utils
-BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
 EasyTAG is an utility for viewing and editing tags of MP3, MP2, FLAC,
