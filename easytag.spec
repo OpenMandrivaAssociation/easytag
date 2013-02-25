@@ -88,5 +88,5 @@ desktop-file-install --vendor="" \
 %{_bindir}/easytag
 %{_mandir}/man1/easytag.1*
 %{_datadir}/applications/easytag.desktop
-%{_datadir}/pixmaps/*
-%{_datadir}/easytag/
+%{_datadir}/icons/hicolor/*/apps/%{name}.png
+
