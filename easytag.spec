@@ -16,6 +16,7 @@ BuildRequires:	libwavpack-devel
 BuildRequires:	speex-devel
 BuildRequires:	libmp4v2-devel >= 1:2.0
 BuildRequires:  desktop-file-utils
+BuildRequires:	intltool
 Requires(post):	desktop-file-utils
 Requires(postun):	desktop-file-utils
 
