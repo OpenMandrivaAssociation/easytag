@@ -89,4 +89,5 @@ desktop-file-install --vendor="" \
 %{_mandir}/man1/easytag.1*
 %{_datadir}/applications/easytag.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
+%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 
