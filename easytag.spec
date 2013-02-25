@@ -61,8 +61,6 @@ Features:
 %setup -q 
 bzcat %SOURCE2 > po/ru.po
 
-./autogen.sh
-
 %build
 %configure2_5x
 %make
