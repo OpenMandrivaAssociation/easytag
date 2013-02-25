@@ -7,6 +7,7 @@ Group:		Sound
 URL:		http://projects.gnome.org/easytag/
 Source0:	http://download.gnome.org/sources/easytag/2.1/%{name}-%{version}.tar.xz
 Source2:	easytag-2.1.6-ru.po.bz2
+Patch0:		easytag-2.1.8-fix-wavpack-warning.patch
 BuildRequires:	gtk2-devel >= 2.4
 BuildRequires:	id3lib-devel
 BuildRequires:	libid3tag-devel
@@ -61,11 +62,11 @@ Features:
 %prep
 %setup -q 
 bzcat %SOURCE2 > po/ru.po
+%patch0 -p1
 
 %build
 %configure2_5x
 
-export CFLAGS=-std=c99
 %make
 
 %install
