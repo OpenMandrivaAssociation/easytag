@@ -83,7 +83,7 @@ desktop-file-install --vendor="" \
 
 
 %files -f %{name}.lang
-%doc ChangeLog README TODO THANKS USERS-GUIDE
+%doc ChangeLog README TODO THANKS
 %doc doc/EasyTAG_Documentation* doc/users_guide*
 %{_bindir}/easytag
 %{_mandir}/man1/easytag.1*
