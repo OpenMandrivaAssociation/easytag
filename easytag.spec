@@ -64,6 +64,8 @@ bzcat %SOURCE2 > po/ru.po
 
 %build
 %configure2_5x
+
+export CFLAGS=-std=c99
 %make
 
 %install
