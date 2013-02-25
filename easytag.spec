@@ -7,8 +7,6 @@ Group:		Sound
 URL:		http://projects.gnome.org/easytag/
 Source0:	http://download.gnome.org/sources/easytag/2.1/%{name}-%{version}.tar.xz
 Source2:	easytag-2.1.6-ru.po.bz2
-Patch1:		easytag_gnudb.patch
-Patch2:		easytag-automake-1.13.patch
 BuildRequires:	gtk2-devel >= 2.4
 BuildRequires:	id3lib-devel
 BuildRequires:	libid3tag-devel
@@ -60,9 +58,8 @@ Features:
 - Written in C and uses GTK+ 2.4 for the GUI.
 
 %prep
-%setup -q -n %name
+%setup -q 
 bzcat %SOURCE2 > po/ru.po
-%apply_patches
 
 ./autogen.sh
 
