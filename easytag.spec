@@ -1,25 +1,27 @@
+%define url_ver %(echo %{version}|cut -d. -f1,2)
+
 Summary:	Tag editor for MP3, OGG files
 Name:		easytag
 Version:	2.1.8
 Release:	1
 License:	GPLv2+
 Group:		Sound
-URL:		http://projects.gnome.org/easytag/
-Source0:	http://download.gnome.org/sources/easytag/2.1/%{name}-%{version}.tar.xz
+Url:		http://projects.gnome.org/easytag/
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/easytag/%{url_ver}/%{name}-%{version}.tar.xz
 Source2:	easytag-2.1.6-ru.po.bz2
 Patch0:		easytag-2.1.8-fix-wavpack-warning.patch
-BuildRequires:	gtk2-devel >= 2.4
-BuildRequires:	id3lib-devel
-BuildRequires:	libid3tag-devel
-BuildRequires:	libvorbis-devel
-BuildRequires:	libflac-devel
-BuildRequires:	libwavpack-devel
-BuildRequires:	speex-devel
-BuildRequires:	libmp4v2-devel >= 1:2.0
-BuildRequires:  desktop-file-utils
+
+BuildRequires:	desktop-file-utils
 BuildRequires:	intltool
-Requires(post):	desktop-file-utils
-Requires(postun):	desktop-file-utils
+BuildRequires:	id3lib-devel
+BuildRequires:	libmp4v2-devel >= 1:2.0
+BuildRequires:	pkgconfig(flac)
+BuildRequires:	pkgconfig(gtk-2.0)
+BuildRequires:	pkgconfig(id3tag)
+BuildRequires:	pkgconfig(speex)
+BuildRequires:	pkgconfig(vorbis)
+BuildRequires:	pkgconfig(wavpack)
+Requires(post,postun):	desktop-file-utils
 
 %description
 EasyTAG is an utility for viewing and editing tags of MP3, MP2, FLAC,
@@ -62,7 +64,7 @@ Features:
 %prep
 %setup -q 
 bzcat %SOURCE2 > po/ru.po
-%patch0 -p1
+%apply_patches
 
 %build
 %configure2_5x
@@ -70,24 +72,23 @@ bzcat %SOURCE2 > po/ru.po
 %make
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
 
 %find_lang %{name}
 
 desktop-file-install --vendor="" \
-  --remove-mime-type="x-directory/normal" \
-  --add-mime-type="inode/directory" \
-  --remove-category="Editor" \
-  --dir $RPM_BUILD_ROOT%{_datadir}/applications $RPM_BUILD_ROOT%{_datadir}/applications/*
-
+	--remove-mime-type="x-directory/normal" \
+	--add-mime-type="inode/directory" \
+	--remove-category="Editor" \
+	--dir %{buildroot}%{_datadir}/applications \
+	%{buildroot}%{_datadir}/applications/*
 
 %files -f %{name}.lang
 %doc ChangeLog README TODO THANKS
 %doc doc/EasyTAG_Documentation* doc/users_guide*
 %{_bindir}/easytag
-%{_mandir}/man1/easytag.1*
 %{_datadir}/applications/easytag.desktop
-%{_datadir}/icons/hicolor/*/apps/%{name}.png
-%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
+%{_iconsdir}/hicolor/*/apps/%{name}.png
+%{_iconsdir}/hicolor/scalable/apps/%{name}.svg
+%{_mandir}/man1/easytag.1*
 
