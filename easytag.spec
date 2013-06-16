@@ -3,7 +3,7 @@
 Summary:	Tag editor for MP3, OGG files
 Name:		easytag
 Version:	2.1.8
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		Sound
 Url:		http://projects.gnome.org/easytag/
@@ -16,7 +16,7 @@ BuildRequires:	intltool
 BuildRequires:	id3lib-devel
 BuildRequires:	libmp4v2-devel >= 1:2.0
 BuildRequires:	pkgconfig(flac)
-BuildRequires:	pkgconfig(gtk-2.0)
+BuildRequires:	pkgconfig(gtk+-2.0)
 BuildRequires:	pkgconfig(id3tag)
 BuildRequires:	pkgconfig(speex)
 BuildRequires:	pkgconfig(vorbis)
