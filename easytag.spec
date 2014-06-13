@@ -3,7 +3,7 @@
 Summary:	Tag editor for MP3, OGG files
 Name:		easytag
 Version:	2.1.8
-Release:	6
+Release:	7
 License:	GPLv2+
 Group:		Sound
 Url:		http://projects.gnome.org/easytag/
