@@ -21,6 +21,8 @@ BuildRequires:	xsltproc
 BuildRequires:	pkgconfig(flac)
 BuildRequires:	pkgconfig(gtk+-3.0)
 BuildRequires:	pkgconfig(id3tag)
+BuildRequires:  pkgconfig(opusfile)
+BuildRequires:  pkgconfig(libnautilus-extension)
 BuildRequires:	pkgconfig(speex)
 BuildRequires:	pkgconfig(vorbis)
 BuildRequires:	pkgconfig(wavpack)
