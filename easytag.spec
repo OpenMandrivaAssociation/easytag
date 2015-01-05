@@ -11,6 +11,7 @@ Source0:	http://ftp.gnome.org/pub/GNOME/sources/easytag/%{url_ver}/%{name}-%{ver
 
 BuildRequires:	desktop-file-utils
 BuildRequires:	intltool
+BuildRequires:	itstool
 BuildRequires:	id3lib-devel
 BuildRequires:	libmp4v2-devel >= 1:2.0
 BuildRequires:	pkgconfig(flac)
