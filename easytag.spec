@@ -3,7 +3,7 @@
 Summary:	Tag editor for MP3, OGG files
 Name:		easytag
 Version:	2.3.3
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		Sound
 Url:		http://projects.gnome.org/easytag/
@@ -21,9 +21,10 @@ BuildRequires:	xsltproc
 BuildRequires:	pkgconfig(flac)
 BuildRequires:	pkgconfig(gtk+-3.0)
 BuildRequires:	pkgconfig(id3tag)
-BuildRequires:  pkgconfig(opusfile)
-BuildRequires:  pkgconfig(libnautilus-extension)
+BuildRequires:	pkgconfig(opusfile)
+BuildRequires:	pkgconfig(libnautilus-extension)
 BuildRequires:	pkgconfig(speex)
+BuildRequires:	pkgconfig(taglib)
 BuildRequires:	pkgconfig(vorbis)
 BuildRequires:	pkgconfig(wavpack)
 Requires(post,postun):	desktop-file-utils
