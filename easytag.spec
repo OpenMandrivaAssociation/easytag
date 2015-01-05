@@ -14,6 +14,7 @@ BuildRequires:	intltool
 BuildRequires:	itstool
 BuildRequires:	id3lib-devel
 BuildRequires:	libmp4v2-devel >= 1:2.0
+BuildRequires:	xmllint
 BuildRequires:	pkgconfig(flac)
 BuildRequires:	pkgconfig(gtk+-2.0)
 BuildRequires:	pkgconfig(id3tag)
