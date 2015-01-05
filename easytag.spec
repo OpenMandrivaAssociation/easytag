@@ -10,11 +10,14 @@ Url:		http://projects.gnome.org/easytag/
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/easytag/%{url_ver}/%{name}-%{version}.tar.xz
 
 BuildRequires:	desktop-file-utils
+BuildRequires:	docbook-dtd44-xml
+BuildRequires:	docbook-style-xsl
 BuildRequires:	intltool
 BuildRequires:	itstool
 BuildRequires:	id3lib-devel
 BuildRequires:	libmp4v2-devel >= 1:2.0
-BuildRequires:	xmllint
+BuildRequires:	libxml2-utils
+BuildRequires:	xsltproc
 BuildRequires:	pkgconfig(flac)
 BuildRequires:	pkgconfig(gtk+-2.0)
 BuildRequires:	pkgconfig(id3tag)
