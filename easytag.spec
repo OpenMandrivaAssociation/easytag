@@ -19,7 +19,7 @@ BuildRequires:	libmp4v2-devel >= 1:2.0
 BuildRequires:	libxml2-utils
 BuildRequires:	xsltproc
 BuildRequires:	pkgconfig(flac)
-BuildRequires:	pkgconfig(gtk+-2.0)
+BuildRequires:	pkgconfig(gtk+-3.0)
 BuildRequires:	pkgconfig(id3tag)
 BuildRequires:	pkgconfig(speex)
 BuildRequires:	pkgconfig(vorbis)
