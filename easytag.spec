@@ -2,14 +2,12 @@
 
 Summary:	Tag editor for MP3, OGG files
 Name:		easytag
-Version:	2.1.8
-Release:	9
+Version:	2.3.3
+Release:	1
 License:	GPLv2+
 Group:		Sound
 Url:		http://projects.gnome.org/easytag/
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/easytag/%{url_ver}/%{name}-%{version}.tar.xz
-Source2:	easytag-2.1.6-ru.po.bz2
-Patch0:		easytag-2.1.8-fix-wavpack-warning.patch
 
 BuildRequires:	desktop-file-utils
 BuildRequires:	intltool
@@ -63,18 +61,17 @@ Features:
 
 %prep
 %setup -q 
-bzcat %SOURCE2 > po/ru.po
 %apply_patches
 
 %build
-%configure2_5x
+%configure
 
 %make
 
 %install
 %makeinstall_std
 
-%find_lang %{name}
+%find_lang %{name} --with-gnome
 
 desktop-file-install --vendor="" \
 	--remove-mime-type="x-directory/normal" \
@@ -85,10 +82,11 @@ desktop-file-install --vendor="" \
 
 %files -f %{name}.lang
 %doc ChangeLog README TODO THANKS
-%doc doc/EasyTAG_Documentation* doc/users_guide*
 %{_bindir}/easytag
 %{_datadir}/applications/easytag.desktop
 %{_iconsdir}/hicolor/*/apps/%{name}.png
 %{_iconsdir}/hicolor/scalable/apps/%{name}.svg
 %{_mandir}/man1/easytag.1*
-
+%{_libdir}/nautilus/extensions-3.0/libnautilus-easytag.so
+%{_datadir}/appdata/easytag*.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.EasyTAG.*.xml
