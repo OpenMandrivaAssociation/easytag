@@ -1,8 +1,9 @@
 %define url_ver %(echo %{version}|cut -d. -f1,2)
+%define _disable_rebuild_configure 1
 
 Summary:	Tag editor for MP3, OGG files
 Name:		easytag
-Version:	2.3.3
+Version:	2.4.0
 Release:	1
 License:	GPLv2+
 Group:		Sound
@@ -90,7 +91,7 @@ desktop-file-install --vendor="" \
 %{_bindir}/easytag
 %{_datadir}/applications/easytag.desktop
 %{_iconsdir}/hicolor/*/apps/%{name}.png
-%{_iconsdir}/hicolor/scalable/apps/%{name}.svg
+%{_iconsdir}/hicolor/*/apps/%{name}*.svg
 %{_mandir}/man1/easytag.1*
 %{_libdir}/nautilus/extensions-3.0/libnautilus-easytag.so
 %{_datadir}/appdata/easytag*.xml
