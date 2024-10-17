@@ -7,7 +7,7 @@ Version:	2.4.3
 Release:	5
 License:	GPLv2+
 Group:		Sound
-Url:		http://projects.gnome.org/easytag/
+Url:		https://projects.gnome.org/easytag/
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/easytag/%{url_ver}/%{name}-%{version}.tar.xz
 
 BuildRequires:	desktop-file-utils
