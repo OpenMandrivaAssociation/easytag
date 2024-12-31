@@ -97,6 +97,6 @@ desktop-file-install --vendor="" \
 %{_iconsdir}/hicolor/*/apps/%{name}.png
 %{_iconsdir}/hicolor/*/apps/%{name}*.svg
 %{_mandir}/man1/easytag.1*
-%{_libdir}/nautilus/extensions-3.0/libnautilus-easytag.so
+#{_libdir}/nautilus/extensions-3.0/libnautilus-easytag.so
 %{_datadir}/appdata/easytag*.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.EasyTAG.*.xml
