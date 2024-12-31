@@ -22,12 +22,14 @@ BuildRequires:	pkgconfig(flac)
 BuildRequires:	pkgconfig(gtk+-3.0)
 BuildRequires:	pkgconfig(id3tag)
 BuildRequires:	pkgconfig(opusfile)
-BuildRequires:	pkgconfig(libnautilus-extension)
 BuildRequires:	pkgconfig(speex)
 BuildRequires:	pkgconfig(taglib)
 BuildRequires:	pkgconfig(vorbis)
 BuildRequires:	pkgconfig(wavpack)
 Requires(post,postun):	desktop-file-utils
+
+%patchlist
+easytag-2.4.3-taglib-2.x.patch
 
 %description
 EasyTAG is an utility for viewing and editing tags of MP3, MP2, FLAC,
