@@ -7,17 +7,16 @@ Version:	2.4.3
 Release:	7
 License:	GPLv2+
 Group:		Sound
-Url:		https://projects.gnome.org/easytag/
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/easytag/%{url_ver}/%{name}-%{version}.tar.xz
-
+Url:		https://gitlab.gnome.org/GNOME/easytag
+Source0:	https://ftp.gnome.org/pub/GNOME/sources/easytag/%{url_ver}/%{name}-%{version}.tar.xz
 BuildRequires:	desktop-file-utils
 BuildRequires:	docbook-dtd44-xml
 BuildRequires:	docbook-style-xsl
 BuildRequires:	intltool
 BuildRequires:	itstool
-BuildRequires:	id3lib-devel
 BuildRequires:	libxml2-utils
 BuildRequires:	xsltproc
+BuildRequires:	id3lib-devel
 BuildRequires:	pkgconfig(flac)
 BuildRequires:	pkgconfig(gtk+-3.0)
 BuildRequires:	pkgconfig(id3tag)
@@ -69,27 +68,6 @@ Features:
   Portuguese translation languages,
 - Written in C and uses GTK+ 2.4 for the GUI.
 
-%prep
-%setup -q 
-%autopatch -p1
-
-%build
-%configure
-
-%make_build
-
-%install
-%make_install
-
-%find_lang %{name} --with-gnome
-
-desktop-file-install --vendor="" \
-	--remove-mime-type="x-directory/normal" \
-	--add-mime-type="inode/directory" \
-	--remove-category="Editor" \
-	--dir %{buildroot}%{_datadir}/applications \
-	%{buildroot}%{_datadir}/applications/*
-
 %files -f %{name}.lang
 %doc ChangeLog README TODO THANKS
 %{_bindir}/easytag
@@ -100,3 +78,26 @@ desktop-file-install --vendor="" \
 #{_libdir}/nautilus/extensions-3.0/libnautilus-easytag.so
 %{_datadir}/appdata/easytag*.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.EasyTAG.*.xml
+
+#-----------------------------------------------------------------------------
+
+%prep
+%autosetup -p1
+
+
+%build
+%configure
+
+%make_build
+
+
+%install
+%make_install
+
+%find_lang %{name} --with-gnome
+
+desktop-file-edit \
+	--remove-mime-type="x-directory/normal" \
+	--add-mime-type="inode/directory" \
+	--remove-category="Editor" \
+	%{buildroot}%{_datadir}/applications/*
