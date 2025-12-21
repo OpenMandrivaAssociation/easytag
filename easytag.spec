@@ -9,6 +9,11 @@ License:	GPLv2+
 Group:		Sound
 Url:		https://gitlab.gnome.org/GNOME/easytag
 Source0:	https://ftp.gnome.org/pub/GNOME/sources/easytag/%{url_ver}/%{name}-%{version}.tar.xz
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	desktop-file-utils
 BuildRequires:	docbook-dtd44-xml
 BuildRequires:	docbook-style-xsl
