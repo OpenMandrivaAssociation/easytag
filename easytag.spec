@@ -1,26 +1,26 @@
 %define url_ver %(echo %{version}|cut -d. -f1,2)
-%define _disable_rebuild_configure 1
+%global _disable_rebuild_configure 1
 
 Summary:	Tag editor for MP3, OGG files
 Name:		easytag
 Version:	2.4.3
-Release:	7
+Release:	8
 License:	GPLv2+
-Group:		Sound
+Group:	Sound
 Url:		https://gitlab.gnome.org/GNOME/easytag
 Source0:	https://ftp.gnome.org/pub/GNOME/sources/easytag/%{url_ver}/%{name}-%{version}.tar.xz
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	libtool-base
-BuildRequires:	slibtool
-BuildRequires:	make
 BuildRequires:	desktop-file-utils
 BuildRequires:	docbook-dtd44-xml
 BuildRequires:	docbook-style-xsl
 BuildRequires:	intltool
 BuildRequires:	itstool
+BuildRequires:	libtool-base
 BuildRequires:	libxml2-utils
+BuildRequires:	slibtool
 BuildRequires:	xsltproc
+BuildRequires:	make
 BuildRequires:	id3lib-devel
 BuildRequires:	pkgconfig(flac)
 BuildRequires:	pkgconfig(gtk+-3.0)
@@ -34,6 +34,7 @@ Requires(post,postun):	desktop-file-utils
 
 %patchlist
 easytag-2.4.3-taglib-2.x.patch
+easytag-2.4.3-fix-missing-include-and-const.patch
 
 %description
 EasyTAG is an utility for viewing and editing tags of MP3, MP2, FLAC,

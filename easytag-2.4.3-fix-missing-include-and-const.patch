@@ -1,0 +1,89 @@
+diff -rupN easytag-2.4.3.old/src/browser.c easytag-2.4.3/src/browser.c
+--- easytag-2.4.3.old/src/browser.c	2016-08-30 17:31:39.000000000 +0200
++++ easytag-2.4.3/src/browser.c	2026-03-17 16:58:43.769497188 +0100
+@@ -32,6 +32,7 @@
+ #include <glib/gstdio.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <strings.h>
+ #include <errno.h>
+ 
+ #include "application_window.h"
+diff -rupN easytag-2.4.3.old/src/cddb_dialog.c easytag-2.4.3/src/cddb_dialog.c
+--- easytag-2.4.3.old/src/cddb_dialog.c	2016-08-30 17:31:39.000000000 +0200
++++ easytag-2.4.3/src/cddb_dialog.c	2026-03-17 16:58:55.657733903 +0100
+@@ -26,6 +26,7 @@
+ #include <stdio.h>
+ #include <unistd.h>
+ #include <string.h>
++#include <strings.h>
+ #include <stdlib.h>
+ #include <sys/types.h>
+ #include "win32/win32dep.h"
+diff -rupN easytag-2.4.3.old/src/file.c easytag-2.4.3/src/file.c
+--- easytag-2.4.3.old/src/file.c	2016-08-14 13:53:21.000000000 +0200
++++ easytag-2.4.3/src/file.c	2026-03-17 16:59:31.239442176 +0100
+@@ -23,6 +23,7 @@
+ #include <glib/gi18n.h>
+ #include <glib/gstdio.h>
+ #include <string.h>
++#include <strings.h>
+ #include <stdlib.h>
+ #include <unistd.h>
+ #include <utime.h>
+diff -rupN easytag-2.4.3.old/src/file_description.c easytag-2.4.3/src/file_description.c
+--- easytag-2.4.3.old/src/file_description.c	2016-12-03 10:34:39.000000000 +0100
++++ easytag-2.4.3/src/file_description.c	2026-03-17 16:59:52.698329761 +0100
+@@ -20,6 +20,7 @@
+ #include "file_description.h"
+ 
+ #include <string.h>
++#include <strings.h>
+ 
+ const ET_File_Description ETFileDescription[] =
+ {
+diff -rupN easytag-2.4.3.old/src/scan.c easytag-2.4.3/src/scan.c
+--- easytag-2.4.3.old/src/scan.c	2016-06-24 16:57:32.000000000 +0200
++++ easytag-2.4.3/src/scan.c	2026-03-17 16:58:00.968044435 +0100
+@@ -94,7 +94,7 @@ Scan_Process_Fields_Remove_Space (gchar
+ gchar *
+ Scan_Process_Fields_Insert_Space (const gchar *string)
+ {
+-    gchar *iter;
++    const gchar *iter;
+     gunichar c;
+     GString *string1;
+ 
+diff -rupN easytag-2.4.3.old/src/scan_dialog.c easytag-2.4.3/src/scan_dialog.c
+--- easytag-2.4.3.old/src/scan_dialog.c	2016-08-30 17:31:39.000000000 +0200
++++ easytag-2.4.3/src/scan_dialog.c	2026-03-17 17:00:11.572562935 +0100
+@@ -22,6 +22,7 @@
+ #include "scan_dialog.h"
+ 
+ #include <string.h>
++#include <strings.h>
+ #include <stdlib.h>
+ #include <gdk/gdkkeysyms.h>
+ #include <glib/gi18n.h>
+diff -rupN easytag-2.4.3.old/src/tags/id3_tag.c easytag-2.4.3/src/tags/id3_tag.c
+--- easytag-2.4.3.old/src/tags/id3_tag.c	2016-06-24 16:57:32.000000000 +0200
++++ easytag-2.4.3/src/tags/id3_tag.c	2026-03-17 17:00:34.275298829 +0100
+@@ -21,6 +21,7 @@
+ 
+ #include <glib/gi18n.h>
+ #include <string.h>
++#include <strings.h>
+ #include <errno.h>
+ 
+ #include "id3_tag.h"
+diff -rupN easytag-2.4.3.old/src/tags/libapetag/apetaglib.c easytag-2.4.3/src/tags/libapetag/apetaglib.c
+--- easytag-2.4.3.old/src/tags/libapetag/apetaglib.c	2016-11-11 19:34:59.000000000 +0100
++++ easytag-2.4.3/src/tags/libapetag/apetaglib.c	2026-03-17 17:00:50.001688553 +0100
+@@ -23,6 +23,7 @@
+ #include <stddef.h>
+ #include <stdarg.h>
+ #include <string.h>
++#include <strings.h>
+ #include <limits.h>
+ #include <assert.h>
+ #include <math.h>
